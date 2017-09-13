@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/g-hyoga/CP5I/server/model"
 	"github.com/gin-gonic/gin"
@@ -10,11 +11,43 @@ import (
 var db model.DB
 
 func GetRecipe(c *gin.Context) {
+	err := db.Connect()
+	defer db.Close()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	recipe, err := db.GetRecipe(id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"data": recipe,
+	})
+}
+
+func GetEasyRecipe(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"data": model.Recipe{},
 	})
 }
 
+// scoring まだしていない
 func PostRecipe(c *gin.Context) {
 	var recipe model.Recipe
 	c.BindJSON(&recipe)
@@ -42,6 +75,9 @@ func PostRecipe(c *gin.Context) {
 		})
 		return
 	}
+
+	//scoring
+	recipe.Difficulty = 10
 
 	// insert
 	err = db.InsertRecipe(recipe)

@@ -11,11 +11,16 @@ type Recipe struct {
 }
 
 type Ingredient struct {
+	ID       int    `json:"id"`
 	Name     string `json:"name"`
+	RecipeID int    `json:recipe_id`
 	Quantity string `json:"quantity"`
 }
 
 type Method struct {
-	ImageID int    `json:"image_id"`
-	Content string `json:"content"`
+	ID       int    `json:"id"`
+	ImageID  int    `json:"image_id"`
+	RecipeID int    `json:recipe_id`
+	Order    int    `json:method_order`
+	Content  string `json:"content"`
 }
