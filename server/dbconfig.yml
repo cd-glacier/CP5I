@@ -1,0 +1,10 @@
+development:
+  dialect: mysql 
+  datasource: root:password@tcp(localhost:3306)/cookpad_dev?parseTime=true&collation=utf8_general_ci&interpolateParams=true
+  dir: migrations
+
+production:
+  dialect: mysql 
+  datasource: root:password@tcp(localhost:3306)/cookpad?parseTime=true&collation=utf8_general_ci&interpolateParams=true
+  dir: migrations
+

@@ -1,5 +1,5 @@
-DBNAME:=match
-TESTDB:=match_dev
+DBNAME:=cookpad
+TESTDB:=cookpad_dev
 ENV:=development
 
 setup:

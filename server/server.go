@@ -14,7 +14,7 @@ func Run() {
 		})
 	})
 
-	r.GET("/api/instruct_match", controller.GetInstructMatch)
+	r.GET("/api/recipe/:id", controller.GetRecipe)
 
 	r.Run()
 }
