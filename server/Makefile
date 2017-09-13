@@ -29,3 +29,6 @@ migrate/down:
 
 migrate/status:
 	sql-migrate status
+
+post/test:
+	curl -X POST localhost:8080/api/recipe -H "Content-Type: application/json" -d "@public/sample.json"
