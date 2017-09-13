@@ -96,6 +96,43 @@ func (db *DB) GetRecipe(id int) (Recipe, error) {
 	return recipe, nil
 }
 
+func (db *DB) GetEasyRecipes() ([]Recipe, error) {
+	recipes := []Recipe{}
+
+	sql := "select * from `recipe` order by difficulty desc limit 10;"
+	rows, err := db.db.Query(sql)
+	if err != nil {
+		return recipes, err
+	}
+	defer rows.Close()
+	recipes, err = scanRecipe(rows)
+	if err != nil {
+		return recipes, err
+	}
+
+	if len(recipes) == 0 {
+		return recipes, nil
+	}
+
+	for i, recipe := range recipes {
+		id, err := db.GetRecipeID(recipe)
+		if err != nil {
+			return recipes, err
+		}
+
+		recipes[i].Ingredients, err = db.GetIngredients(id)
+		if err != nil {
+			return recipes, err
+		}
+		recipes[i].Method, err = db.GetMethod(id)
+		if err != nil {
+			return recipes, err
+		}
+	}
+
+	return recipes, nil
+}
+
 func (db *DB) GetIngredients(recipeID int) ([]Ingredient, error) {
 	sql := "select * from `ingredient` where recipe_id=?;"
 	rows, err := db.db.Query(sql, recipeID)

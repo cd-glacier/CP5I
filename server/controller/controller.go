@@ -41,9 +41,26 @@ func GetRecipe(c *gin.Context) {
 	})
 }
 
-func GetEasyRecipe(c *gin.Context) {
+func GetEasyRecipes(c *gin.Context) {
+	err := db.Connect()
+	defer db.Close()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	recipes, err := db.GetEasyRecipes()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+
 	c.JSON(http.StatusOK, gin.H{
-		"data": model.Recipe{},
+		"data": recipes,
 	})
 }
 

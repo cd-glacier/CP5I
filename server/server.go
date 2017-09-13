@@ -17,7 +17,7 @@ func Run() {
 	r.GET("/api/recipe/:id", controller.GetRecipe)
 	r.POST("/api/recipe", controller.PostRecipe)
 
-	r.GET("/api/easy/recipe", controller.GetEasyRecipe)
+	r.GET("/api/easy/recipe", controller.GetEasyRecipes)
 
 	r.Run()
 }
