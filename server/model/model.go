@@ -35,6 +35,15 @@ func (db *DB) InsertIngredients(recipeID int, ingredients []Ingredient) error {
 	return err
 }
 
+func (db *DB) InsertMethod(recipeID int, ms []Method) error {
+	var err error
+	for i, m := range ms {
+		_, err = db.db.Exec("INSERT INTO `method` (id, recipe_id, method_order, content) VALUES(?, ?, ?, ?);", 0, recipeID, i, m.Content)
+	}
+
+	return err
+}
+
 // first data is -1
 func (db *DB) GetRecipeID(r Recipe) (int, error) {
 	sql := "select * from `recipe` where name=? and time=? and producer_id=? and difficulty=?;"

@@ -28,6 +28,7 @@ func PostRecipe(c *gin.Context) {
 		return
 	}
 
+	// duplicated data?
 	id, err := db.GetRecipeID(recipe)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -42,6 +43,7 @@ func PostRecipe(c *gin.Context) {
 		return
 	}
 
+	// insert
 	err = db.InsertRecipe(recipe)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -49,7 +51,6 @@ func PostRecipe(c *gin.Context) {
 		})
 		return
 	}
-
 	recipe.ID, err = db.GetRecipeID(recipe)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -57,8 +58,14 @@ func PostRecipe(c *gin.Context) {
 		})
 		return
 	}
-
 	err = db.InsertIngredients(recipe.ID, recipe.Ingredients)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+	err = db.InsertMethod(recipe.ID, recipe.Method)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": err,
