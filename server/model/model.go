@@ -45,6 +45,42 @@ func (db *DB) InsertMethod(recipeID int, ms []Method) error {
 	return err
 }
 
+func (db *DB) InsertKitchenware(recipeID int, kitchenwares []string) error {
+	var err error
+	for _, k := range kitchenwares {
+		id, err := db.GetKitchenwareID(k, recipeID)
+		if err != nil {
+			return err
+		}
+
+		// 登録されていない
+		if id < 0 {
+			_, err = db.db.Exec("INSERT INTO `kitchenware` (id, name, recipe_id) VALUES(?, ?, ?);", 0, k, recipeID)
+		}
+
+	}
+	return err
+}
+
+func (db *DB) GetKitchenwareID(name string, recipe_id int) (int, error) {
+	sql := "select * from `kitchenware` where name=? and recipe_id=?;"
+	rows, err := db.db.Query(sql, name, recipe_id)
+	if err != nil {
+		return -1, err
+	}
+	defer rows.Close()
+	kitchenwares := []Kitchenware{}
+	kitchenwares, err = scanKitchenware(rows)
+	if err != nil {
+		return -1, err
+	}
+	if len(kitchenwares) == 0 {
+		return -1, nil
+	}
+
+	return kitchenwares[0].ID, nil
+}
+
 // first data is -1
 func (db *DB) GetRecipeID(r Recipe) (int, error) {
 	sql := "select * from `recipe` where name=? and time=? and producer_id=? and difficulty=?;"
@@ -246,7 +282,8 @@ func scanKitchenware(rows *sql.Rows) ([]Kitchenware, error) {
 	var err error
 	for rows.Next() {
 		var k Kitchenware
-		if err = rows.Scan(&k.ID, &k.RecipeID, &k.Name); err != nil {
+		if err = rows.Scan(&k.ID, &k.Name, &k.RecipeID); err != nil {
+			pp.Println(err)
 			return ks, err
 		}
 		ks = append(ks, k)
