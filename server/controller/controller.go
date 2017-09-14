@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/g-hyoga/CP5I/server/model"
 	"github.com/g-hyoga/CP5I/server/score"
@@ -54,28 +55,45 @@ func GetEasyRecipes(c *gin.Context) {
 
 	recipes := []model.Recipe{}
 	food := c.Query("food")
-	if food == "" {
-		recipes, err = db.GetEasyRecipes()
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{
-				"error": err,
-			})
-			return
-		}
+	kithechware := c.Query("kithechware")
+	recipes, err = db.GetEasyRecipes()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
 
-	} else {
-		recipes, err = db.GetEasyRecipesWhere(food)
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{
-				"error": err,
-			})
-			return
-		}
+	if food != "" || kithechware != "" {
+		recipes, _ = Filter(strings.Split(food, ","), strings.Split(kithechware, ","), recipes)
 	}
 
 	c.JSON(http.StatusOK, gin.H{
 		"data": recipes,
 	})
+}
+
+func Contains(array []string, target string) bool {
+	for _, e := range array {
+		if strings.Contains(target, e) {
+			return true
+		}
+	}
+	return false
+}
+
+func Filter(food []string, kithechwares []string, recipes []model.Recipe) ([]model.Recipe, error) {
+	result := []model.Recipe{}
+	for _, recipe := range recipes {
+		for _, ingredient := range recipe.Ingredients {
+			if Contains(food, ingredient.Name) {
+				result = append(result, recipe)
+				break
+			}
+		}
+	}
+
+	return result, nil
 }
 
 func PostRecipe(c *gin.Context) {
