@@ -36,5 +36,5 @@ post/test:
 	curl -X POST localhost:8080/api/recipe -H "Content-Type: application/json" -d "@public/sample3.json"
 
 post:
-	curl -X POST http://noticeweb.net/api/recipe -H "Content-Type: application/json" -d "@public/sample.json"
 	curl -X POST http://noticeweb.net/api/recipe -H "Content-Type: application/json" -d "@public/sample2.json"
+	curl -X POST localhost:8080/api/recipe -H "Content-Type: application/json" -d "@public/sample3.json"

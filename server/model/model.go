@@ -83,8 +83,8 @@ func (db *DB) GetKitchenwareID(name string, recipe_id int) (int, error) {
 
 // first data is -1
 func (db *DB) GetRecipeID(r Recipe) (int, error) {
-	sql := "select * from `recipe` where name=? and time=? and producer_id=? and difficulty=?;"
-	rows, err := db.db.Query(sql, r.Name, r.Time, r.ProducerID, r.Difficulty)
+	sql := "select * from `recipe` where name=?;"
+	rows, err := db.db.Query(sql, r.Name)
 	if err != nil {
 		return -1, err
 	}

@@ -118,7 +118,7 @@ func PostRecipe(c *gin.Context) {
 		})
 		return
 	}
-	if id >= 0 {
+	if id != -1 {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": "It is duplicated data",
 		})
