@@ -4,7 +4,6 @@ import (
 	"database/sql"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/k0kubun/pp"
 )
 
 type DB struct {
@@ -206,7 +205,6 @@ func (db *DB) GetEasyRecipesWhere(food string) ([]Recipe, error) {
 	sql := "select * from `recipe` where `name` like ? order by difficulty asc limit 10;"
 	rows, err := db.db.Query(sql, "%"+food+"%")
 	if err != nil {
-		pp.Printf("hoge%s", err)
 		return recipes, err
 	}
 	defer rows.Close()
@@ -283,7 +281,6 @@ func scanKitchenware(rows *sql.Rows) ([]Kitchenware, error) {
 	for rows.Next() {
 		var k Kitchenware
 		if err = rows.Scan(&k.ID, &k.Name, &k.RecipeID); err != nil {
-			pp.Println(err)
 			return ks, err
 		}
 		ks = append(ks, k)
