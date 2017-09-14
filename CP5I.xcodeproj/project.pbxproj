@@ -14,6 +14,10 @@
 		AA3D83231F67C56E00EF07DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3D83211F67C56E00EF07DB /* LaunchScreen.storyboard */; };
 		AA3D832E1F67C56E00EF07DB /* CP5ITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D832D1F67C56E00EF07DB /* CP5ITests.swift */; };
 		AA3D83391F67C56E00EF07DB /* CP5IUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D83381F67C56E00EF07DB /* CP5IUITests.swift */; };
+		AAF52A151F68FADC00A337CC /* detail.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A111F68FADC00A337CC /* detail.png */; };
+		AAF52A161F68FADC00A337CC /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A121F68FADC00A337CC /* home.png */; };
+		AAF52A171F68FADC00A337CC /* recipie.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A131F68FADC00A337CC /* recipie.png */; };
+		AAF52A181F68FADC00A337CC /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A141F68FADC00A337CC /* select.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		AA3D83341F67C56E00EF07DB /* CP5IUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CP5IUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3D83381F67C56E00EF07DB /* CP5IUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CP5IUITests.swift; sourceTree = "<group>"; };
 		AA3D833A1F67C56E00EF07DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF52A111F68FADC00A337CC /* detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail.png; sourceTree = "<group>"; };
+		AAF52A121F68FADC00A337CC /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		AAF52A131F68FADC00A337CC /* recipie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipie.png; sourceTree = "<group>"; };
+		AAF52A141F68FADC00A337CC /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 		AA3D83171F67C56E00EF07DB /* CP5I */ = {
 			isa = PBXGroup;
 			children = (
+				AA3D83461F67C71800EF07DB /* images */,
 				AA3D83181F67C56E00EF07DB /* AppDelegate.swift */,
 				AA3D831A1F67C56E00EF07DB /* ViewController.swift */,
 				AA3D831C1F67C56E00EF07DB /* Main.storyboard */,
@@ -123,6 +132,17 @@
 				AA3D833A1F67C56E00EF07DB /* Info.plist */,
 			);
 			path = CP5IUITests;
+			sourceTree = "<group>";
+		};
+		AA3D83461F67C71800EF07DB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				AAF52A111F68FADC00A337CC /* detail.png */,
+				AAF52A121F68FADC00A337CC /* home.png */,
+				AAF52A131F68FADC00A337CC /* recipie.png */,
+				AAF52A141F68FADC00A337CC /* select.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +252,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF52A151F68FADC00A337CC /* detail.png in Resources */,
+				AAF52A171F68FADC00A337CC /* recipie.png in Resources */,
+				AAF52A161F68FADC00A337CC /* home.png in Resources */,
+				AAF52A181F68FADC00A337CC /* select.png in Resources */,
 				AA3D83231F67C56E00EF07DB /* LaunchScreen.storyboard in Resources */,
 				AA3D83201F67C56E00EF07DB /* Assets.xcassets in Resources */,
 				AA3D831E1F67C56E00EF07DB /* Main.storyboard in Resources */,
@@ -505,6 +529,7 @@
 				AA3D833F1F67C56E00EF07DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA3D83401F67C56E00EF07DB /* Build configuration list for PBXNativeTarget "CP5ITests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +538,7 @@
 				AA3D83421F67C56E00EF07DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA3D83431F67C56E00EF07DB /* Build configuration list for PBXNativeTarget "CP5IUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +547,7 @@
 				AA3D83451F67C56E00EF07DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

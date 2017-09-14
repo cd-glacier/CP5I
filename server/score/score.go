@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/g-hyoga/CP5I/server/model"
-	"github.com/k0kubun/pp"
 )
 
 // mockとしてはこれで良い
@@ -23,7 +22,6 @@ var dictionary = map[string]int{
 func Contains(array []string, target string) bool {
 	for _, e := range array {
 		if e == target {
-			pp.Println(e, target)
 			return true
 		}
 	}

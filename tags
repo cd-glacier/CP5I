@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DBNAME	server/Makefile	/^DBNAME:=match$/;"	m
+ENV	server/Makefile	/^ENV:=development$/;"	m
+TESTDB	server/Makefile	/^TESTDB:=match_dev$/;"	m
+const.difficuly	server/public/sample_json.js	/^  "difficuly": 20,$/;"	p
+const.id	server/public/sample_json.js	/^  "id": 1,$/;"	p
+const.ingredients	server/public/sample_json.js	/^  "ingredients": [$/;"	p
+const.name	server/public/sample_json.js	/^  "name": "たいのホイル焼き",$/;"	p
+const.pruducer_id	server/public/sample_json.js	/^  "pruducer_id": 5678,$/;"	p
+const.time	server/public/sample_json.js	/^  "time": "01:30:00",$/;"	p
