@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/g-hyoga/CP5I/server/model"
+	"github.com/g-hyoga/CP5I/server/score"
 	"github.com/gin-gonic/gin"
 )
 
@@ -93,8 +94,9 @@ func PostRecipe(c *gin.Context) {
 		return
 	}
 
-	//scoring
-	recipe.Difficulty = 10
+	//scoringa
+
+	recipe.Difficulty = score.Score(recipe.Method)
 
 	// insert
 	err = db.InsertRecipe(recipe)
