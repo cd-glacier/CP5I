@@ -52,12 +52,25 @@ func GetEasyRecipes(c *gin.Context) {
 		return
 	}
 
-	recipes, err := db.GetEasyRecipes()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"error": err,
-		})
-		return
+	recipes := []model.Recipe{}
+	food := c.Query("food")
+	if food == "" {
+		recipes, err = db.GetEasyRecipes()
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err,
+			})
+			return
+		}
+
+	} else {
+		recipes, err = db.GetEasyRecipesWhere(food)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err,
+			})
+			return
+		}
 	}
 
 	c.JSON(http.StatusOK, gin.H{
@@ -65,7 +78,6 @@ func GetEasyRecipes(c *gin.Context) {
 	})
 }
 
-// scoring まだしていない
 func PostRecipe(c *gin.Context) {
 	var recipe model.Recipe
 	c.BindJSON(&recipe)
@@ -95,7 +107,6 @@ func PostRecipe(c *gin.Context) {
 	}
 
 	//scoringa
-
 	recipe.Difficulty, _ = score.Score(recipe.Method)
 
 	// insert

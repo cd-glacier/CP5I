@@ -24,3 +24,9 @@ type Method struct {
 	Order    int    `json:method_order`
 	Content  string `json:"content"`
 }
+
+type Kitchenware struct {
+	ID       int    `json:"id"`
+	Name     string `json:"name"`
+	RecipeID int    `json:recipe_id`
+}
