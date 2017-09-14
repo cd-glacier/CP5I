@@ -3,7 +3,9 @@ package controller
 import (
 	"net/http"
 	"strconv"
+	"strings"
 
+	"github.com/g-hyoga/CP5I/server/kitchenware"
 	"github.com/g-hyoga/CP5I/server/model"
 	"github.com/g-hyoga/CP5I/server/score"
 	"github.com/gin-gonic/gin"
@@ -52,7 +54,10 @@ func GetEasyRecipes(c *gin.Context) {
 		return
 	}
 
-	recipes, err := db.GetEasyRecipes()
+	recipes := []model.Recipe{}
+	food := c.Query("food")
+	kitchechware := c.Query("kitchechware")
+	recipes, err = db.GetEasyRecipes()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": err,
@@ -60,12 +65,38 @@ func GetEasyRecipes(c *gin.Context) {
 		return
 	}
 
+	if food != "" || kitchechware != "" {
+		recipes, _ = Filter(strings.Split(food, ","), strings.Split(kitchechware, ","), recipes)
+	}
+
 	c.JSON(http.StatusOK, gin.H{
 		"data": recipes,
 	})
 }
 
-// scoring まだしていない
+func Contains(array []string, target string) bool {
+	for _, e := range array {
+		if strings.Contains(target, e) {
+			return true
+		}
+	}
+	return false
+}
+
+func Filter(food []string, kitchechwares []string, recipes []model.Recipe) ([]model.Recipe, error) {
+	result := []model.Recipe{}
+	for _, recipe := range recipes {
+		for _, ingredient := range recipe.Ingredients {
+			if Contains(food, ingredient.Name) {
+				result = append(result, recipe)
+				break
+			}
+		}
+	}
+
+	return result, nil
+}
+
 func PostRecipe(c *gin.Context) {
 	var recipe model.Recipe
 	c.BindJSON(&recipe)
@@ -94,8 +125,7 @@ func PostRecipe(c *gin.Context) {
 		return
 	}
 
-	//scoringa
-
+	//scoring
 	recipe.Difficulty, _ = score.Score(recipe.Method)
 
 	// insert
@@ -121,6 +151,15 @@ func PostRecipe(c *gin.Context) {
 		return
 	}
 	err = db.InsertMethod(recipe.ID, recipe.Method)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+		return
+	}
+	// find kitchechwares
+	strKitchechwares := kitchenware.Find(recipe.Method)
+	err = db.InsertKitchenware(recipe.ID, strKitchechwares)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": err,
