@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3EEBEC86A1298E892DAB1A19 /* Pods_CP5IUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FC126011516FF9BAA77C3D /* Pods_CP5IUITests.framework */; };
+		429D72601F6A7E6C00AC2510 /* hoiru.png in Resources */ = {isa = PBXBuildFile; fileRef = 429D725F1F6A7E6C00AC2510 /* hoiru.png */; };
+		429D72641F6A90D200AC2510 /* flypan.png in Resources */ = {isa = PBXBuildFile; fileRef = 429D72631F6A90D200AC2510 /* flypan.png */; };
+		429D72661F6A94AA00AC2510 /* nabe.png in Resources */ = {isa = PBXBuildFile; fileRef = 429D72651F6A94AA00AC2510 /* nabe.png */; };
 		7C36044885B4AD81E7EB2520 /* Pods_CP5ITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6FBAC73934EFBCB5DA225D /* Pods_CP5ITests.framework */; };
 		AA3D83191F67C56E00EF07DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D83181F67C56E00EF07DB /* AppDelegate.swift */; };
 		AA3D831E1F67C56E00EF07DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3D831C1F67C56E00EF07DB /* Main.storyboard */; };
@@ -46,6 +49,9 @@
 /* Begin PBXFileReference section */
 		1A6FBAC73934EFBCB5DA225D /* Pods_CP5ITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP5ITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F326DE30BF76311483F4F99 /* Pods-CP5ITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP5ITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CP5ITests/Pods-CP5ITests.release.xcconfig"; sourceTree = "<group>"; };
+		429D725F1F6A7E6C00AC2510 /* hoiru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hoiru.png; path = ../hoiru.png; sourceTree = "<group>"; };
+		429D72631F6A90D200AC2510 /* flypan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flypan.png; sourceTree = "<group>"; };
+		429D72651F6A94AA00AC2510 /* nabe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nabe.png; path = ../nabe.png; sourceTree = "<group>"; };
 		7C223C809DF59C6AA3E5B426 /* Pods-CP5I.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP5I.release.xcconfig"; path = "Pods/Target Support Files/Pods-CP5I/Pods-CP5I.release.xcconfig"; sourceTree = "<group>"; };
 		80FC126011516FF9BAA77C3D /* Pods_CP5IUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP5IUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D40ED57499250D296FD40C /* Pods-CP5ITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP5ITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CP5ITests/Pods-CP5ITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +177,9 @@
 		AA3D83461F67C71800EF07DB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				429D72651F6A94AA00AC2510 /* nabe.png */,
+				429D72631F6A90D200AC2510 /* flypan.png */,
+				429D725F1F6A7E6C00AC2510 /* hoiru.png */,
 				AAD909081F6A572A009FC930 /* meshi.jpg */,
 				AAF52A111F68FADC00A337CC /* detail.png */,
 				AAF52A121F68FADC00A337CC /* home.png */,
@@ -310,7 +319,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429D72661F6A94AA00AC2510 /* nabe.png in Resources */,
+				429D72641F6A90D200AC2510 /* flypan.png in Resources */,
 				AAF52A151F68FADC00A337CC /* detail.png in Resources */,
+				429D72601F6A7E6C00AC2510 /* hoiru.png in Resources */,
 				AAF52A171F68FADC00A337CC /* recipie.png in Resources */,
 				AAF52A161F68FADC00A337CC /* home.png in Resources */,
 				AAF52A181F68FADC00A337CC /* select.png in Resources */,

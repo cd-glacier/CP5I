@@ -22,9 +22,8 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 
-		searchBar.placeholder = "検索"
+		searchBar.placeholder = "食材で検索"
 		searchBar.delegate = self
-
 		tableView.delegate = self
 		tableView.dataSource = self
 
@@ -47,12 +46,21 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return tableData.count
 	}
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // セルの高さを設定
+        return 100
+    }
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myCell")
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
 		cell.textLabel?.text = tableData[indexPath.row]
+        cell.detailTextLabel?.text = "ここが詳細テキストラベルです"
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.imageView?.image = UIImage(named: "hoiru.png")
 		return cell
 	}
+    
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
