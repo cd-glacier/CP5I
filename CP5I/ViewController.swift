@@ -33,17 +33,15 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		tableView.delegate = self
 		tableView.dataSource = self
 
-		Alamofire.request("http://noticeweb.net/api/easy/recipe").responseJSON { response in
-			let json = JSON(response.result.value)
-			json["data"].forEach{(_, data) in
-				self.recipes.append(Recipe(name: data["name"].string!, imageUrl: data["image_url"].string!))
-				print(self.recipes)
-				self.tableView.reloadData()
-			}
-		}
+		req(food: [], kitchenwares: [])
 	}
-
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		let text:String = searchBar.text!
+		let words:[String] = text.components(separatedBy: " ")
+
+		recipes = []	
+		req(food: words, kitchenwares: [])
+		print(recipes)  
 		//キーボードを閉じる
 		self.view.endEditing(true)
 	}
@@ -58,6 +56,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		print("reload")
 		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
 		cell.textLabel?.text = recipes[indexPath.row].name
 		cell.detailTextLabel?.text = "ここが詳細テキストラベルです"
@@ -67,12 +66,27 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		return cell
 	}
 
+	@IBAction func pushPotButton(_ sender: UIButton) {
+		tableView.reloadData()
+		print(recipes)
+	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
 
+	func req(food: [String], kitchenwares: [String]){
+		let url:String = "http://noticeweb.net/api/easy/recipe"
+		Alamofire.request(url, parameters: ["food": food.joined(separator: ","), "kitchenware": kitchenwares.joined(separator: ",")]).responseJSON { response in
+			let json = JSON(response.result.value)
+			json["data"].forEach{(_, data) in
+				print(data)
+				self.recipes.append(Recipe(name: data["name"].string!, imageUrl: data["image_url"].string!))
+					self.tableView.reloadData()
+			}
+		}
+	}
 
 }
 
