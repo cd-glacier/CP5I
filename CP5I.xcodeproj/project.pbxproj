@@ -16,6 +16,9 @@
 		AA3D832E1F67C56E00EF07DB /* CP5ITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D832D1F67C56E00EF07DB /* CP5ITests.swift */; };
 		AA3D83391F67C56E00EF07DB /* CP5IUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D83381F67C56E00EF07DB /* CP5IUITests.swift */; };
 		AAD909071F6A4D6F009FC930 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD909061F6A4D6F009FC930 /* ViewController.swift */; };
+		AAD909091F6A572A009FC930 /* meshi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAD909081F6A572A009FC930 /* meshi.jpg */; };
+		AAD9090B1F6A5827009FC930 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9090A1F6A5827009FC930 /* TestTableViewController.swift */; };
+		AAD9090D1F6A5A55009FC930 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9090C1F6A5A55009FC930 /* TableViewController.swift */; };
 		AAF52A151F68FADC00A337CC /* detail.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A111F68FADC00A337CC /* detail.png */; };
 		AAF52A161F68FADC00A337CC /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A121F68FADC00A337CC /* home.png */; };
 		AAF52A171F68FADC00A337CC /* recipie.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF52A131F68FADC00A337CC /* recipie.png */; };
@@ -62,6 +65,9 @@
 		AA3D83381F67C56E00EF07DB /* CP5IUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CP5IUITests.swift; sourceTree = "<group>"; };
 		AA3D833A1F67C56E00EF07DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD909061F6A4D6F009FC930 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAD909081F6A572A009FC930 /* meshi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meshi.jpg; sourceTree = "<group>"; };
+		AAD9090A1F6A5827009FC930 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTableViewController.swift; path = CP5I/TestTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		AAD9090C1F6A5A55009FC930 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		AAF52A111F68FADC00A337CC /* detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail.png; sourceTree = "<group>"; };
 		AAF52A121F68FADC00A337CC /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		AAF52A131F68FADC00A337CC /* recipie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipie.png; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				AA3D831F1F67C56E00EF07DB /* Assets.xcassets */,
 				AA3D83211F67C56E00EF07DB /* LaunchScreen.storyboard */,
 				AA3D83241F67C56E00EF07DB /* Info.plist */,
+				AAD9090C1F6A5A55009FC930 /* TableViewController.swift */,
 			);
 			path = CP5I;
 			sourceTree = "<group>";
@@ -164,10 +171,12 @@
 		AA3D83461F67C71800EF07DB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				AAD909081F6A572A009FC930 /* meshi.jpg */,
 				AAF52A111F68FADC00A337CC /* detail.png */,
 				AAF52A121F68FADC00A337CC /* home.png */,
 				AAF52A131F68FADC00A337CC /* recipie.png */,
 				AAF52A141F68FADC00A337CC /* select.png */,
+				AAD9090A1F6A5827009FC930 /* TestTableViewController.swift */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -307,6 +316,7 @@
 				AAF52A181F68FADC00A337CC /* select.png in Resources */,
 				AA3D83231F67C56E00EF07DB /* LaunchScreen.storyboard in Resources */,
 				AA3D83201F67C56E00EF07DB /* Assets.xcassets in Resources */,
+				AAD909091F6A572A009FC930 /* meshi.jpg in Resources */,
 				AA3D831E1F67C56E00EF07DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +496,8 @@
 			files = (
 				AAD909071F6A4D6F009FC930 /* ViewController.swift in Sources */,
 				AA3D83191F67C56E00EF07DB /* AppDelegate.swift in Sources */,
+				AAD9090B1F6A5827009FC930 /* TestTableViewController.swift in Sources */,
+				AAD9090D1F6A5A55009FC930 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CP5I/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CP5I.CP5I;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,6 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CP5I/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CP5I.CP5I;
 				PRODUCT_NAME = "$(TARGET_NAME)";
