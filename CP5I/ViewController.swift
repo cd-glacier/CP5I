@@ -8,15 +8,21 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
 	@IBOutlet weak var searchBar: UISearchBar!
-	@IBOutlet weak var label: UILabel!
 	@IBOutlet weak var tableView: UITableView!
 
-	var tableData: [String] = []
+
+	struct Recipe {
+		var name: String
+		var imageUrl: String
+	}
+
+	var recipes: [Recipe] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,38 +35,38 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 
 		Alamofire.request("http://noticeweb.net/api/easy/recipe").responseJSON { response in
 			let json = JSON(response.result.value)
-
 			json["data"].forEach{(_, data) in
-				self.tableData.append(data["name"].string!)
-                self.tableView.reloadData()
+				self.recipes.append(Recipe(name: data["name"].string!, imageUrl: data["image_url"].string!))
+				print(self.recipes)
+				self.tableView.reloadData()
 			}
 		}
 	}
 
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-		label.text = searchBar.text
 		//キーボードを閉じる
 		self.view.endEditing(true)
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tableData.count
+		return recipes.count
 	}
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // セルの高さを設定
-        return 100
-    }
+
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		// セルの高さを設定
+		return 100
+	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
-		cell.textLabel?.text = tableData[indexPath.row]
-        cell.detailTextLabel?.text = "ここが詳細テキストラベルです"
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        cell.imageView?.image = UIImage(named: "hoiru.png")
+		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
+		cell.textLabel?.text = recipes[indexPath.row].name
+		cell.detailTextLabel?.text = "ここが詳細テキストラベルです"
+		cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+		cell.imageView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+		cell.imageView?.af_setImage(withURL: NSURL(string:recipes[indexPath.row].imageUrl)! as URL,  placeholderImage: UIImage(named: "hoiru.png"), imageTransition: .crossDissolve(0.5))
 		return cell
 	}
-    
+
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

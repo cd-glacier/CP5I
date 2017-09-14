@@ -6,6 +6,7 @@ target 'CP5I' do
   use_frameworks!
 	platform :ios, '10.3'
 	pod "Alamofire"
+	pod "AlamofireImage"
 	pod "SwiftyJSON"
 
   # Pods for CP5I
