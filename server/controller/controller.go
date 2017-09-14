@@ -96,7 +96,7 @@ func PostRecipe(c *gin.Context) {
 
 	//scoringa
 
-	recipe.Difficulty = score.Score(recipe.Method)
+	recipe.Difficulty, _ = score.Score(recipe.Method)
 
 	// insert
 	err = db.InsertRecipe(recipe)
