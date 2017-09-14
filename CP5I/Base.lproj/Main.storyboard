@@ -42,6 +42,9 @@
                                 <rect key="frame" x="49" y="98" width="75" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="flypan.png"/>
+                                <connections>
+                                    <action selector="pushFlypanButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cbb-37-pYk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7z-ek-VHj">
                                 <rect key="frame" x="270" y="128" width="46" height="30"/>

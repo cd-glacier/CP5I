@@ -23,6 +23,8 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	}
 
 	var recipes: [Recipe] = []
+	var findFood: [String] = []
+	var findKitchenware: [String] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,10 +39,10 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	}
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		let text:String = searchBar.text!
-		let words:[String] = text.components(separatedBy: " ")
+		findFood = text.components(separatedBy: " ")
 
 		recipes = []	
-		req(food: words, kitchenwares: [])
+		req(food: findFood, kitchenwares: findKitchenware)
 		print(recipes)  
 		//キーボードを閉じる
 		self.view.endEditing(true)
@@ -66,6 +68,17 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		return cell
 	}
 
+	@IBAction func pushFlypanButton(_ sender: UIButton) {
+		if findKitchenware.contains(where: { $0 == "フライパン" }) {
+			findKitchenware.remove(at: findKitchenware.index(of: "フライパン")!)
+		} else {
+			findKitchenware.append("フライパン")
+		}
+
+		recipes = []
+		req(food: findFood, kitchenwares: findKitchenware)
+	}
+
 	@IBAction func pushPotButton(_ sender: UIButton) {
 		tableView.reloadData()
 		print(recipes)
@@ -83,7 +96,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 			json["data"].forEach{(_, data) in
 				print(data)
 				self.recipes.append(Recipe(name: data["name"].string!, imageUrl: data["image_url"].string!))
-					self.tableView.reloadData()
+				self.tableView.reloadData()
 			}
 		}
 	}
