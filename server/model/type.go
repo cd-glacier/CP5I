@@ -6,6 +6,7 @@ type Recipe struct {
 	ProducerID  int          `json:"producer_id"`
 	Difficulty  int          `json:"difficulty"`
 	Time        string       `json:"time"`
+	ImageURL    string       `json:"image_url"`
 	Ingredients []Ingredient `json:"ingredients"`
 	Method      []Method     `json:"method"`
 }
@@ -19,7 +20,7 @@ type Ingredient struct {
 
 type Method struct {
 	ID       int    `json:"id"`
-	ImageID  int    `json:"image_id"`
+	ImageURL string `json:"image_url"`
 	RecipeID int    `json:recipe_id`
 	Order    int    `json:method_order`
 	Content  string `json:"content"`

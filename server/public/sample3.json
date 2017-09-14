@@ -1,0 +1,69 @@
+{
+  "name": "ホクホク☆簡単！ジャーマンポテト♪",
+  "pruducer_id": 5678,
+  "image_url": "https://img.cpcdn.com/recipes/2078143/280/ab5f4aa2406b87e8eec1aebe24321f6f.jpg?u=921598&p=1358221896",
+  "ingredients": [
+    {
+      "name": "じゃがいも（乱切り）",
+      "quantity": "中3個"
+    },
+    {
+      "name": "玉ねぎ（スライス）",
+      "quantity": "1/2個"
+    },
+    {
+      "name": "ブロックベーコン（1ｃｍ幅カット）",
+      "quantity": "160g"
+    },
+    {
+      "name": "オリーブオイル",
+      "quantity": "大さじ2"
+    },
+    {
+      "name": "にんにく",
+      "quantity": "1片"
+    },
+    {
+      "name": "コンソメ（顆粒）",
+      "quantity": "小さじ2"
+    },
+    {
+      "name": "塩・こしょう",
+      "quantity": "適量"
+    },
+    {
+      "name": "パセリ(みじんぎり)",
+      "quantity": "大さじ1"
+    }
+  ],
+  "method": [
+    {
+      "image_url": "",
+      "content": "じゃがいもはさっと水に通し、塩を振ってラップをし、電子レンジ（600ｗ）で約5～7分間加熱する。"
+    },
+    {
+      "image_url": "",
+      "content": "フライパンにオリーブオイルを熱し、半分に切って潰したニンニクを入れて香りが出るまで炒める。"
+    },
+    {
+      "image_url": "",
+      "content": "2に、1のじゃがいも・玉ねぎ・ベーコンを入れて塩・こしょうとコンソメを加えて玉ねぎがしんなりするまで炒める。"
+    },
+    {
+      "image_url": "",
+      "content": "3に、パセリを入れて全体に絡めたら出来上がりです。"
+    },
+    {
+      "image_url": "https://img.cpcdn.com/steps/16663112/136/506f4bb51f69db0afc57a2523ec300cb.jpg?u=921598&p=1433326877",
+      "content": "ジャーマンポテト♪カレーマヨver.♪"
+    },
+    {
+      "image_url": "https://img.cpcdn.com/steps/16845826/136/85a3de416f638031e8a7449a57f5d4d3.jpg?u=921598&p=1435209197",
+      "content": "ジャーマンポテト♪粒マスタードver.♪"
+    },
+    {
+      "image_url": "https://img.cpcdn.com/steps/17884969/136/d38244e5c44b687b4841c102b76d12d8.jpg?u=921598&p=1447317163",
+      "content": "アンチョビマヨdeジャーマンポテト♪"
+    }
+  ]
+}

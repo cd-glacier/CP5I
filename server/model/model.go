@@ -23,7 +23,7 @@ func (db *DB) Close() error {
 }
 
 func (db *DB) InsertRecipe(r Recipe) error {
-	_, err := db.db.Exec("INSERT INTO `recipe` (id, name, time, producer_id, difficulty) VALUES(?, ?, ?, ?, ?);", 0, r.Name, r.Time, r.ProducerID, r.Difficulty)
+	_, err := db.db.Exec("INSERT INTO `recipe` (id, name, time, image_url, producer_id, difficulty) VALUES(?, ?, ?, ?, ?, ?);", 0, r.Name, r.Time, r.ImageURL, r.ProducerID, r.Difficulty)
 	return err
 }
 
@@ -39,7 +39,7 @@ func (db *DB) InsertIngredients(recipeID int, ingredients []Ingredient) error {
 func (db *DB) InsertMethod(recipeID int, ms []Method) error {
 	var err error
 	for i, m := range ms {
-		_, err = db.db.Exec("INSERT INTO `method` (id, recipe_id, method_order, content) VALUES(?, ?, ?, ?);", 0, recipeID, i, m.Content)
+		_, err = db.db.Exec("INSERT INTO `method` (id, recipe_id, method_order, content, image_url) VALUES(?, ?, ?, ?, ?);", 0, recipeID, i, m.Content, m.ImageURL)
 	}
 
 	return err
@@ -243,7 +243,7 @@ func scanRecipe(rows *sql.Rows) ([]Recipe, error) {
 	var err error
 	for rows.Next() {
 		var r Recipe
-		if err = rows.Scan(&r.ID, &r.Name, &r.Time, &r.ProducerID, &r.Difficulty); err != nil {
+		if err = rows.Scan(&r.ID, &r.Name, &r.Time, &r.ImageURL, &r.ProducerID, &r.Difficulty); err != nil {
 			return recipes, err
 		}
 		recipes = append(recipes, r)
@@ -269,7 +269,7 @@ func scanMethod(rows *sql.Rows) ([]Method, error) {
 	var err error
 	for rows.Next() {
 		var m Method
-		if err = rows.Scan(&m.ID, &m.RecipeID, &m.Order, &m.Content); err != nil {
+		if err = rows.Scan(&m.ID, &m.RecipeID, &m.Order, &m.Content, &m.ImageURL); err != nil {
 			return ms, err
 		}
 		ms = append(ms, m)

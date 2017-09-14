@@ -1,6 +1,7 @@
 {
   "name": "秋鮭ときのことじゃがのバター醤油炒め♡",
   "pruducer_id": 5678,
+  "image_url": "https://img.cpcdn.com/recipes/4098653/280/25815b380ee6f4c610f7c25a57909dfd.jpg?u=7402309&p=1475243464",
   "ingredients": [
     {
       "name": "秋鮭",
@@ -45,27 +46,27 @@
   ],
   "method": [
     {
-      "image_id": 1234,
+      "image_url": "https://img.cpcdn.com/steps/20579357/136/9b1401acc1b572c75980111e43ff3634.jpg?u=7402309&p=1475243818",
       "content": "じゃがいもは洗って皮ごとラップし、500wのレンジで4分、裏返して3分かけ、柔らかくしておく。皮を剥がし一口大に切る。"
     },
     {
-      "image_id": 2345,
+      "image_url": "https://img.cpcdn.com/steps/20579358/136/1aebfd37c19156edda1be524a75f318f.jpg?u=7402309&p=1475243965",
       "content": "鮭に塩コショウを振り、フライパンにオリーブオイルを熱し、鮭を両面焼き色がつくまで焼いていく。"
     },
     {
-      "image_id": 2345,
+      "image_url": "https://img.cpcdn.com/steps/20579359/136/23ef89265081672a6775ec97a999d2d3.jpg?u=7402309&p=1475244053",
       "content": "お好きなきのこ類とバター10gを入れ、フライパンに蓋をし、弱火にして3分ほど蒸し焼き"
     },
     {
-      "image_id": 2345,
+      "image_url": "https://img.cpcdn.com/steps/20579360/136/49f4cda68845a573fc55ed7bec88b7c0.jpg?u=7402309&p=1475244110",
       "content": "じゃがいもと★の調味料、残りのバター10gを入れ、中火で煮詰めていく。"
     },
     {
-      "image_id": 2345,
+      "image_url": "https://img.cpcdn.com/steps/20579360/136/49f4cda68845a573fc55ed7bec88b7c0.jpg?u=7402309&p=1475244110",
       "content": "じゃがいもと★の調味料、残りのバター10gを入れ、中火で煮詰めていく。"
     },
     {
-      "image_id": 2345,
+      "image_url": "https://img.cpcdn.com/steps/20579432/136/ef9671f360abeae4b1afdb399b79daeb.jpg?u=7402309&p=1475244201",
       "content": "出来上がり〜♪ ♬ ヾ(´︶`♡)ﾉ ♬ ♪（→は最後にドライパセリを振りかけて、蓮根チップスも乗せてあります。）"
     }
   ]

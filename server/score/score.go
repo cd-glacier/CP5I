@@ -6,7 +6,7 @@ import (
 	"github.com/g-hyoga/CP5I/server/model"
 )
 
-// mockとしてはこれで良い
+// mockとしてはこれで良いや
 var difficultyWords = []string{
 	"揚げる",
 	"フライパン",

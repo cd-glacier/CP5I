@@ -10,6 +10,8 @@ var kitchenwares = []string{
 	"フライパン",
 	"皿",
 	"鍋",
+	"切",
+	"刻",
 }
 
 func Find(method []model.Method) []string {

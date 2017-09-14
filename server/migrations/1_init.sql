@@ -3,6 +3,7 @@ CREATE TABLE `recipe` (
 	`id`			int UNSIGNED NOT NULL AUTO_INCREMENT,
 	`name` 		varchar(255) NOt NULL,
 	`time` 	varchar(255) NOT NULL,
+	`image_url` 	varchar(255) NOT NULL,
 	`producer_id`		int NOT NULL,
 	`difficulty`		int NOT NULL,
 	PRIMARY KEY(`id`)
