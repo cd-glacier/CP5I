@@ -32,6 +32,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		searchBar.placeholder = "食材で検索"
 		searchBar.delegate = self
 		tableView.delegate = self
+        tableView.allowsSelection = true
 		tableView.dataSource = self
 
 		req(food: [], kitchenwares: [])
@@ -62,7 +63,6 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
 		cell.imageView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
 		cell.imageView?.af_setImage(withURL: NSURL(string:recipes[indexPath.row].imageUrl)! as URL,  placeholderImage: UIImage(named: "hoiru.png"), imageTransition: .crossDissolve(0.5))
-		
 		return cell
 	}
 
@@ -86,6 +86,14 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("touch")
+        print(recipes[indexPath.row])
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+
 
 	func req(food: [String], kitchenwares: [String]){
 		let url:String = "http://noticeweb.net/api/easy/recipe"
