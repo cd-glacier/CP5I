@@ -21,15 +21,16 @@ class ViewController2: UIViewController {
 	//var ingredients: [Ingredient]
     
     var id = 1
-
+    static var recipeID: Int = 0
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
         //ingredientTextView.isEditable = false
         //methodTextView.isEditable = false
 
 		// Do any additional setup after loading the view.
-
-		let url:String = "http://noticeweb.net/api/recipe/" + String(id)
+        
+		let url:String = "http://noticeweb.net/api/recipe/" + String(ViewController2.recipeID)
 		Alamofire.request(url).responseJSON { response in
 			debugPrint(url)
 			let json = JSON(response.result.value)

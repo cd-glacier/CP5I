@@ -17,6 +17,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	@IBOutlet weak var tableView: UITableView!
 
 	struct Recipe {
+        var id: Int
 		var name: String
 		var imageUrl: String
 	}
@@ -80,6 +81,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	@IBAction func pushPotButton(_ sender: UIButton) {
 		tableView.reloadData()
 		print(recipes)
+        
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -90,17 +92,23 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("touch")
         print(recipes[indexPath.row])
-        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        self.performSegue(withIdentifier: "toDetail", sender: recipes[indexPath.row].id)
     }
     
-
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            let secondViewController = segue.destination
+            ViewController2.recipeID = sender as! Int
+        }
+    }
+    
 	func req(food: [String], kitchenwares: [String]){
 		let url:String = "http://noticeweb.net/api/easy/recipe"
 		Alamofire.request(url, parameters: ["food": food.joined(separator: ","), "kitchenware": kitchenwares.joined(separator: ",")]).responseJSON { response in
 			let json = JSON(response.result.value)
 			json["data"].forEach{(_, data) in
-				self.recipes.append(Recipe(name: data["name"].string!, imageUrl: data["image_url"].string!))
+                print(data)
+                self.recipes.append(Recipe(id: data["id"].int!, name: data["name"].string!, imageUrl: data["image_url"].string!))
 				self.tableView.reloadData()
 			}
 		}
