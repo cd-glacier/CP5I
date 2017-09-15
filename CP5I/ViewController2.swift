@@ -15,14 +15,17 @@ class ViewController2: UIViewController {
 
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var ingredientTextView: UITextView!
+    @IBOutlet weak var methodTextView: UITextView!
     
 	//var ingredients: [Ingredient]
-	var method: [Method] = []
     
     var id = 1
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        //ingredientTextView.isEditable = false
+        //methodTextView.isEditable = false
 
 		// Do any additional setup after loading the view.
 
@@ -33,23 +36,17 @@ class ViewController2: UIViewController {
 			let data = json["data"]
             self.recipeNameLabel.text = data["name"].string!
             self.recipeImageView.af_setImage(withURL: NSURL(string: data["image_url"].string!)! as URL, placeholderImage: UIImage(named: "hoiru.png"), imageTransition: .crossDissolve(0.5))
+            data["ingredients"].forEach{(_, ingredient) in
+                var name:String = ingredient["name"].string!
+                self.ingredientTextView.text = self.ingredientTextView.text + String(name) + "\n"
+            }
+            data["method"].forEach{(i, m) in
+                var content:String = m["content"].string!
+                self.methodTextView.text = self.methodTextView.text + String(i) + ". " + String(content) + "\n"
+            }
+            
 		}
-        
-
-		
-
 	}
-
-
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return method.count
-	}
-
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		// セルの高さを設定
-		return 100
-	}
-
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
