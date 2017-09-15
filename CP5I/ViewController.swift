@@ -16,7 +16,6 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var tableView: UITableView!
 
-
 	struct Recipe {
 		var name: String
 		var imageUrl: String
@@ -84,10 +83,16 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 		print(recipes)
 	}
 
+    @IBAction func pushToDetailButton(_ sender: UIButton) {
+        print("pushed")
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+    
 
 	func req(food: [String], kitchenwares: [String]){
 		let url:String = "http://noticeweb.net/api/easy/recipe"
