@@ -58,12 +58,18 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
-		cell.textLabel?.text = recipes[indexPath.row].name
-		cell.detailTextLabel?.text = "ここが詳細テキストラベルです"
-		cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-		cell.imageView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-		cell.imageView?.af_setImage(withURL: NSURL(string:recipes[indexPath.row].imageUrl)! as URL,  placeholderImage: UIImage(named: "hoiru.png"), imageTransition: .crossDissolve(0.5))
+        print("reload")
+//		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
+//		cell.textLabel?.text = recipes[indexPath.row].name
+//		cell.detailTextLabel?.text = "ここが詳細テキストラベルです"
+//		cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+//		cell.imageView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//		cell.imageView?.af_setImage(withURL: NSURL(string:recipes[indexPath.row].imageUrl)! as URL,  placeholderImage: UIImage(named: "hoiru.png"), imageTransition: .crossDissolve(0.5))
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") as! CustomTableViewCell
+        
+        cell.myTitleLabel.text = recipes[indexPath.row].name
+        cell.myImageView.af_setImage(withURL: NSURL(string:recipes[indexPath.row].imageUrl)! as URL,  placeholderImage: UIImage(named: "hoiru.png"), imageTransition: .crossDissolve(0.5))
 		return cell
 	}
 
